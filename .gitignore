@@ -1,0 +1,28 @@
+# NetBeans private settings
+nbproject/private/
+
+# Build output
+build/
+dist/
+
+# Java compiled files
+*.class
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IntelliJ IDEA
+.idea/
+
+# VS Code
+.vscode/
+
+# Linux swap files
+*.swp

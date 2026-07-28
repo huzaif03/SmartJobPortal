@@ -1,0 +1,337 @@
+/* ============================================================
+   ELogin.css
+   ============================================================ */
+
+:root {
+    /* ── Headings ────────────────────────────── */
+    --heading-h1     : #2C3E50;
+    --heading-h2     : #2C3E50;
+    --heading-h3     : #E67E22;
+    /* ── Body Text ───────────────────────────── */
+    --text-primary   : #444444;
+    --text-secondary : #777777;
+    --text-hint      : #AAAAAA;
+    /* ── Form Text ───────────────────────────── */
+    --form-label     : #2C3E50;
+    --form-input     : #222222;
+    --form-placeholder: #AAAAAA;
+    --form-hint      : #999999;
+    --form-error     : #E74C3C;
+    --form-success   : #27AE60;
+    /* ── Link Text ───────────────────────────── */
+    --link-color     : #E67E22;
+    --link-hover     : #D35400;
+
+    /* ── Structural (non text) helpers ──────── */
+    --navbar-height  : 80px;
+    --page-bg        : #F5F6F7;
+    --card-bg        : #FFFFFF;
+    --border-color   : #E4E7EA;
+    --input-border   : #DADFE3;
+    --input-bg       : #F1F3F5;
+    --input-bg-focus : #FFFFFF;
+    --toggle-gradient-start: #E74C3C;
+    --toggle-gradient-end  : #E67E22;
+}
+
+/* ============================================================
+   Reset
+   ============================================================ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--page-bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* ============================================================
+   Page shell — navbar sits in normal flow, .content fills
+   the remaining viewport height below it
+   ============================================================ */
+.outer {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content {
+    flex: 1;
+    min-height: calc(100vh - var(--navbar-height));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 20px;
+    gap: 28px;
+}
+
+/* ============================================================
+   Title
+   ============================================================ */
+.container-detail {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.container-detail h1 {
+    color: var(--heading-h1);
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+.container-detail #icon {
+    display: flex;
+    align-items: center;
+    color: var(--heading-h3);
+}
+
+.container-detail #icon svg {
+    width: 26px;
+    height: 26px;
+}
+
+/* ============================================================
+   Card
+   ============================================================ */
+.container {
+    width: 100%;
+    max-width: 400px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 6px 20px rgba(44, 62, 80, 0.08);
+}
+
+/* ============================================================
+   Error / status message
+   ============================================================ */
+.msg {
+    color: var(--form-error);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+.msg:empty {
+    display: none;
+}
+
+/* ============================================================
+   Toggle — Worker / Employer
+   ============================================================ */
+.toggle-btn {
+    display: flex;
+    gap: 6px;
+    background-color: var(--page-bg);
+    border-radius: 999px;
+    padding: 6px;
+    margin-bottom: 28px;
+    box-shadow: inset 0 0 0 1px var(--border-color);
+}
+
+.toggle-btn .btn {
+    flex: 1;
+    border-radius: 999px;
+    transition: background-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+.toggle-btn .btn a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 12px 10px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.toggle-btn .btn a svg {
+    transition: transform 0.25s ease;
+}
+
+/* Inactive hover state */
+.toggle-btn .btn:not(.active):hover {
+    background-color: var(--card-bg);
+    transform: translateY(-2px);
+}
+
+.toggle-btn .btn:not(.active):hover a {
+    color: var(--link-color);
+}
+
+.toggle-btn .btn:not(.active):hover a svg {
+    transform: scale(1.1);
+}
+
+/* Active state — gradient pill, pops in on load */
+.toggle-btn .btn.active {
+    background: linear-gradient(135deg, var(--toggle-gradient-start), var(--toggle-gradient-end));
+    box-shadow: 0 8px 18px rgba(230, 78, 60, 0.32);
+    animation: toggle-pop-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.toggle-btn .btn.active a {
+    color: #FFFFFF;
+}
+
+.toggle-btn .btn.active:hover a svg {
+    transform: scale(1.12) rotate(-4deg);
+}
+
+@keyframes toggle-pop-in {
+    0% {
+        transform: scale(0.85);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ============================================================
+   Form
+   ============================================================ */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    color: var(--form-label);
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid transparent;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: var(--form-input);
+    background-color: var(--input-bg);
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input[type="text"]::placeholder,
+.form-group input[type="password"]::placeholder {
+    color: var(--form-placeholder);
+}
+
+.form-group input[type="text"]:hover,
+.form-group input[type="password"]:hover {
+    background-color: #EAEDEF;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus {
+    outline: none;
+    background-color: var(--input-bg-focus);
+    border-color: var(--link-color);
+    box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.15);
+}
+
+.pass-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.pass-wrapper input {
+    flex: 1;
+    padding-right: 44px;
+}
+
+.login-eye-btn {
+    position: absolute;
+    right: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--form-hint);
+    padding: 6px 8px;
+    line-height: 1;
+}
+
+.login-eye-btn:hover {
+    color: var(--text-primary);
+}
+
+.form-submit {
+    margin-top: 8px;
+}
+
+#submit {
+    width: 100%;
+    padding: 12px 0;
+    background-color: var(--link-color);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 7px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+#submit:hover {
+    background-color: var(--link-hover);
+}
+
+/* ============================================================
+   Register link
+   ============================================================ */
+.register-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.register-link p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.register-link a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-link a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 480px) {
+    .content {
+        padding: 32px 16px;
+    }
+
+    .container {
+        padding: 24px 20px;
+    }
+
+    .container-detail h1 {
+        font-size: 1.4rem;
+    }
+}

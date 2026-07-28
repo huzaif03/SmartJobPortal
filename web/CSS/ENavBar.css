@@ -1,0 +1,177 @@
+/* ============================================================
+   ENavBar.css
+   ============================================================ */
+
+:root {
+    /* ── Navbar Text ─────────────────────────── */
+    --nav-brand: #FFFFFF;
+    /* brand name */
+    --nav-link: #BDC3C7;
+    /* nav links */
+    --nav-active: #E67E22;
+    /* active / logout */
+    /* ── Headings ────────────────────────────── */
+    --heading-h1: #2C3E50;
+    --heading-h2: #2C3E50;
+    --heading-h3: #E67E22;
+    /* ── Body Text ───────────────────────────── */
+    --text-primary: #444444;
+    --text-secondary: #777777;
+    --text-hint: #AAAAAA;
+    /* ── Structural (non text) helpers ──────── */
+    --navbar-bg: #2C3E50;
+    --navbar-height: 80px;
+    --border-color: #E4E7EA;
+}
+
+
+/* ============================================================
+   Navbar shell — hard-capped at 80px
+   ============================================================ */
+
+.nav-bar {
+    height: var(--navbar-height);
+    max-height: var(--navbar-height);
+    min-height: var(--navbar-height);
+    overflow: hidden;
+    background-color: var(--navbar-bg);
+    display: flex;
+    align-items: center;
+    padding: 0 32px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ============================================================
+   Logo
+   ============================================================ */
+
+.nav-bar .logo a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    height: 100%;
+}
+
+.nav-bar .svg-logo {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    flex-shrink: 0;
+}
+
+.nav-bar .svg-logo img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    /* renders the mark in brand-white regardless of source fill */
+/*    filter: brightness(0) invert(1);*/
+}
+
+.nav-bar .logo h1 {
+    color: var(--nav-brand);
+    font-size: 1.25rem;
+    font-weight: 700;
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+}
+
+
+/* ============================================================
+   Middle spacer — pushes links to the right
+   ============================================================ */
+
+.nav-bar .middle {
+    flex: 1;
+}
+
+
+/* ============================================================
+   Right-side links
+   ============================================================ */
+
+.nav-bar .left {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    height: 100%;
+}
+
+.nav-bar .left>div {
+    color: var(--nav-link);
+    font-size: 0.95rem;
+    font-weight: 500;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: color 0.15s ease;
+}
+
+.nav-bar .left>div a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.nav-bar .left>div:hover,
+.nav-bar .left>div a:hover {
+    color: var(--nav-active);
+}
+
+
+/* Logout / Login always reads as the active accent color */
+
+.nav-bar .left .logout {
+    color: var(--nav-active);
+    font-weight: 600;
+    padding: 8px 16px;
+    border: 1.5px solid var(--nav-active);
+    border-radius: 6px;
+}
+
+.nav-bar .left .logout a {
+    color: var(--nav-active);
+}
+
+.nav-bar .left .logout:hover {
+    background-color: var(--nav-active);
+}
+
+.nav-bar .left .logout:hover a {
+    color: var(--nav-brand);
+}
+
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+@media (max-width: 768px) {
+    .nav-bar {
+        padding: 0 16px;
+    }
+    .nav-bar .left {
+        gap: 16px;
+    }
+    .nav-bar .logo h1 {
+        font-size: 1.05rem;
+    }
+}
+
+@media (max-width: 560px) {
+    .nav-bar .logo h1 {
+        display: none;
+    }
+    .nav-bar .left {
+        gap: 12px;
+    }
+    .nav-bar .left>div {
+        font-size: 0.85rem;
+    }
+    .nav-bar .left .logout {
+        padding: 6px 12px;
+    }
+}

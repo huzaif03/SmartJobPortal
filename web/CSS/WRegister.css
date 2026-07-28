@@ -1,0 +1,430 @@
+/* ============================================================
+   WRegister.css
+   ============================================================ */
+
+:root {
+    /* ── Headings ────────────────────────────── */
+    --heading-h1     : #2C3E50;
+    --heading-h2     : #2C3E50;
+    --heading-h3     : #E67E22;
+    /* ── Body Text ───────────────────────────── */
+    --text-primary   : #444444;
+    --text-secondary : #777777;
+    --text-hint      : #AAAAAA;
+    /* ── Form Text ───────────────────────────── */
+    --form-label     : #2C3E50;
+    --form-input     : #222222;
+    --form-placeholder: #AAAAAA;
+    --form-hint      : #999999;
+    --form-error     : #E74C3C;
+    --form-success   : #27AE60;
+    /* ── Link Text ───────────────────────────── */
+    --link-color     : #E67E22;
+    --link-hover     : #D35400;
+
+    /* ── Structural (non text) helpers ──────── */
+    --navbar-height  : 80px;
+    --page-bg        : #F5F6F7;
+    --card-bg        : #FFFFFF;
+    --border-color   : #E4E7EA;
+    --input-bg       : #F1F3F5;
+    --input-bg-focus : #FFFFFF;
+}
+
+/* ============================================================
+   Reset
+   ============================================================ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--page-bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* ============================================================
+   Page shell
+   ============================================================ */
+.register-wrapper {
+    min-height: calc(100vh - var(--navbar-height));
+    display: flex;
+    justify-content: center;
+    padding: 48px 20px;
+}
+
+.register-card {
+    width: 100%;
+    max-width: 640px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 36px;
+    box-shadow: 0 6px 20px rgba(44, 62, 80, 0.08);
+    height: fit-content;
+}
+
+.register-title {
+    color: var(--heading-h1);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.register-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+}
+
+/* ============================================================
+   Error alert
+   ============================================================ */
+.register-alert {
+    background-color: rgba(231, 76, 60, 0.08);
+    border: 1px solid var(--form-error);
+    color: var(--form-error);
+    font-size: 0.88rem;
+    font-weight: 500;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* ============================================================
+   Section titles
+   ============================================================ */
+.register-section-title {
+    color: var(--heading-h3);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding-bottom: 10px;
+    margin: 28px 0 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.register-section-title:first-of-type {
+    margin-top: 0;
+}
+
+/* ============================================================
+   Form layout
+   ============================================================ */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 20px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: inline-block;
+    color: var(--form-label);
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.optional-tag {
+    color: var(--text-hint);
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+.field-hint {
+    display: block;
+    color: var(--form-hint);
+    font-size: 0.78rem;
+    margin-top: 6px;
+}
+
+.field-hint.error {
+    color: var(--form-error);
+}
+
+.field-hint.success {
+    color: var(--form-success);
+}
+
+/* ============================================================
+   Text / date / tel / email / select inputs
+   ============================================================ */
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="date"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid transparent;
+    border-radius: 8px;
+    background-color: var(--input-bg);
+    color: var(--form-input);
+    font-family: inherit;
+    font-size: 0.92rem;
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input::placeholder {
+    color: var(--form-placeholder);
+}
+
+input:hover,
+select:hover {
+    background-color: #EAEDEF;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    background-color: var(--input-bg-focus);
+    border-color: var(--link-color);
+    box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.15);
+}
+
+select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23777777' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 40px;
+}
+
+select:invalid {
+    color: var(--form-placeholder);
+}
+
+/* ============================================================
+   Password field with eye toggle
+   ============================================================ */
+.pass-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.pass-wrapper input {
+    flex: 1;
+    padding-right: 44px;
+}
+
+.eye-btn {
+    position: absolute;
+    right: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--form-hint);
+    padding: 6px 8px;
+    line-height: 1;
+}
+
+.eye-btn:hover {
+    color: var(--text-primary);
+}
+
+/* ============================================================
+   Gender chip selector
+   ============================================================ */
+.chip-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.chip-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border: 1.5px solid var(--border-color);
+    border-radius: 999px;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: var(--input-bg);
+    transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.chip-label input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.chip-label:has(input:checked) {
+    border-color: var(--link-color);
+    background-color: rgba(230, 126, 34, 0.08);
+    color: var(--link-color);
+    font-weight: 600;
+}
+
+.chip-label:hover {
+    border-color: var(--text-hint);
+}
+
+/* ============================================================
+   File upload boxes with preview
+   ============================================================ */
+.upload-box {
+    position: relative;
+    border: 1.5px dashed var(--border-color);
+    border-radius: 10px;
+    background-color: var(--input-bg);
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.upload-box:hover {
+    border-color: var(--link-color);
+    background-color: #EAEDEF;
+}
+
+.upload-box input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
+.upload-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-hint);
+    font-size: 0.82rem;
+    text-align: center;
+    padding: 12px;
+    pointer-events: none;
+}
+
+.upload-placeholder[hidden] {
+    display: none;
+}
+
+.upload-preview {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.upload-preview[hidden] {
+    display: none;
+}
+
+.upload-box-avatar {
+    max-width: 140px;
+    min-height: 140px;
+    border-radius: 50%;
+}
+
+/* ============================================================
+   Address fieldset
+   ============================================================ */
+.address-fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* ============================================================
+   Submit button
+   ============================================================ */
+.register-submit-btn {
+    width: 100%;
+    padding: 13px 0;
+    margin-top: 8px;
+    background-color: var(--link-color);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.register-submit-btn:hover {
+    background-color: var(--link-hover);
+}
+
+.register-submit-btn:active {
+    transform: translateY(1px);
+}
+
+/* ============================================================
+   Login link
+   ============================================================ */
+.register-login-link {
+    text-align: center;
+    margin-top: 20px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.register-login-link a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-login-link a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 600px) {
+    .register-wrapper {
+        padding: 28px 14px;
+    }
+
+    .register-card {
+        padding: 22px 18px;
+    }
+
+    .register-title {
+        font-size: 1.3rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .chip-group {
+        width: 100%;
+    }
+
+    .chip-label {
+        flex: 1;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,437 @@
+/* ============================================================
+   WHome.css
+   ============================================================ */
+
+:root {
+    /* ── Headings ────────────────────────────── */
+    --heading-h1     : #2C3E50;
+    --heading-h2     : #2C3E50;
+    --heading-h3     : #E67E22;
+    /* ── Body Text ───────────────────────────── */
+    --text-primary   : #444444;
+    --text-secondary : #777777;
+    --text-hint      : #AAAAAA;
+    /* ── Status Text ─────────────────────────── */
+    --available      : #27AE60;
+    --not-available  : #E74C3C;
+    --pending        : #E67E22;
+    /* ── Form Text ───────────────────────────── */
+    --form-label     : #2C3E50;
+    --form-input     : #222222;
+    --form-placeholder: #AAAAAA;
+    --form-hint      : #999999;
+    /* ── Link Text ───────────────────────────── */
+    --link-color     : #E67E22;
+    --link-hover     : #D35400;
+
+    /* ── Structural (non text) helpers ──────── */
+    --navbar-height  : 80px;
+    --page-bg        : #F5F6F7;
+    --card-bg        : #FFFFFF;
+    --border-color   : #E4E7EA;
+    --input-bg       : #F1F3F5;
+    --input-bg-focus : #FFFFFF;
+    
+    
+    --nav-active     : #E67E22;
+}
+
+/* ============================================================
+   Reset
+   ============================================================ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--page-bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+/* ============================================================
+   Page shell
+   ============================================================ */
+.home-wrapper {
+    min-height: calc(100vh - var(--navbar-height));
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 40px 24px 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* ============================================================
+   Welcome banner
+   ============================================================ */
+.home-welcome {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 28px 32px;
+    box-shadow: 0 6px 20px rgba(44, 62, 80, 0.06);
+}
+
+.home-welcome-title {
+    color: var(--heading-h1);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.home-welcome-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+}
+
+.home-alert-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--link-color);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 10px 16px;
+    border: 1.5px solid var(--link-color);
+    border-radius: 999px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.home-alert-link:hover {
+    background-color: var(--link-color);
+    color: #FFFFFF;
+}
+
+.home-alert-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--pending);
+    flex-shrink: 0;
+}
+
+.home-alert-link:hover .home-alert-dot {
+    background-color: #FFFFFF;
+}
+
+/* ============================================================
+   Stat cards
+   ============================================================ */
+.home-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.home-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 22px 24px;
+    box-shadow: 0 4px 14px rgba(44, 62, 80, 0.05);
+}
+
+.home-card-label {
+    color: var(--text-hint);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 10px;
+}
+
+.home-card-value {
+    color: var(--heading-h2);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.home-card-link {
+    color: var(--link-color);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.home-card-link:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+/* -- Availability card -- */
+.availability-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.availability-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--not-available);
+}
+
+.availability-text {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--not-available);
+}
+
+.availability-indicator[data-available="true"] .availability-dot {
+    background-color: var(--available);
+}
+
+.availability-indicator[data-available="true"] .availability-text {
+    color: var(--available);
+}
+
+.home-toggle-btn {
+    width: 100%;
+    padding: 10px 0;
+    background: none;
+    border: 1.5px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+}
+
+.home-toggle-btn:hover {
+    border-color: var(--link-color);
+    color: var(--link-color);
+    background-color: rgba(230, 126, 34, 0.06);
+}
+
+/* ============================================================
+   Section wrapper (Find Work, Quick Links)
+   ============================================================ */
+.home-section {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 28px 32px;
+    box-shadow: 0 4px 14px rgba(44, 62, 80, 0.05);
+}
+
+.home-section-title {
+    color: var(--heading-h3);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* ============================================================
+   Section header (title + "View all" link)
+   ============================================================ */
+.home-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 12px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.home-section-header .home-section-title {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+.home-section-link {
+    color: var(--link-color);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.home-section-link:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+/* ============================================================
+   Recent activity list
+   ============================================================ */
+.home-empty-state {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 28px 12px;
+}
+
+.home-activity-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.home-activity-item:last-child {
+    border-bottom: none;
+    padding-bottom: 4px;
+}
+
+.home-activity-title {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.home-activity-meta {
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+}
+
+.home-status-badge {
+    flex-shrink: 0;
+    padding: 5px 14px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.home-status-badge.status-pending {
+    color: var(--pending);
+    background-color: rgba(230, 126, 34, 0.1);
+}
+
+.home-status-badge.status-accepted {
+    color: var(--available);
+    background-color: rgba(39, 174, 96, 0.1);
+}
+
+.home-status-badge.status-rejected {
+    color: var(--not-available);
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
+/* ============================================================
+   Quick links
+   ============================================================ */
+.home-quicklinks-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.home-quicklink {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 22px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background-color: var(--page-bg);
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+    transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+}
+
+.home-quicklink svg {
+    transition: transform 0.2s ease;
+}
+
+.home-quicklink:hover {
+    border-color: var(--link-color);
+    color: var(--link-color);
+    background-color: #FFFFFF;
+    transform: translateY(-3px);
+}
+
+.home-quicklink:hover svg {
+    transform: scale(1.1);
+}
+
+.home-quicklink-badge {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: 999px;
+    background-color: var(--not-available);
+    color: #FFFFFF;
+    font-size: 0.7rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-bar .left > div > .active-home {
+    color: var(--nav-active);
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 860px) {
+    .home-stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .home-quicklinks-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 560px) {
+    .home-wrapper {
+        padding: 24px 16px 48px;
+        gap: 20px;
+    }
+
+    .home-welcome {
+        padding: 22px 20px;
+    }
+
+    .home-stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .home-section {
+        padding: 22px 20px;
+    }
+
+    .home-activity-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .home-quicklinks-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}

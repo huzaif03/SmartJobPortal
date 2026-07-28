@@ -1,0 +1,262 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 16-Jul-2026, 5:12:26 pm
+    Author     : huzaif
+*/
+/* ============================================================
+   EWorkerProfile.css
+   ============================================================ */
+
+:root {
+    /* ── Headings ────────────────────────────── */
+    --heading-h1     : #2C3E50;
+    --heading-h3     : #E67E22;
+    /* ── Body Text ───────────────────────────── */
+    --text-primary   : #444444;
+    --text-secondary : #777777;
+    --text-hint      : #AAAAAA;
+    /* ── Card Text ───────────────────────────── */
+    --card-name      : #2C3E50;
+    --card-occupation: #E67E22;
+    --card-details   : #555555;
+    /* ── Status Text ─────────────────────────── */
+    --available      : #27AE60;
+    --not-available  : #E74C3C;
+    /* ── Link Text ───────────────────────────── */
+    --link-color     : #E67E22;
+    --link-hover     : #D35400;
+
+    /* ── Structural (non text) helpers ──────── */
+    --navbar-height  : 80px;
+    --page-bg        : #F5F6F7;
+    --card-bg        : #FFFFFF;
+    --border-color   : #E4E7EA;
+    
+    
+}
+
+/* ============================================================
+   Reset
+   ============================================================ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--page-bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* ============================================================
+   Page shell
+   ============================================================ */
+.ewp-wrapper {
+    min-height: calc(100vh - var(--navbar-height));
+    display: flex;
+    justify-content: center;
+    padding: 48px 20px;
+}
+
+.ewp-card {
+    width: 100%;
+    max-width: 640px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 36px;
+    box-shadow: 0 6px 20px rgba(44, 62, 80, 0.08);
+    height: fit-content;
+}
+
+/* ============================================================
+   Header — photo + name/occupation
+   ============================================================ */
+.ewp-header {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.ewp-photo {
+    flex-shrink: 0;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--card-bg);
+    outline: 1px solid var(--border-color);
+    box-shadow: 0 4px 14px rgba(44, 62, 80, 0.12);
+}
+
+.ewp-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    display: block;
+}
+
+.ewp-photo img.ewp-photo-fallback {
+    object-fit: contain;
+    object-position: center;
+    padding: 14px;
+    background-color: var(--page-bg);
+}
+
+.ewp-header-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.ewp-status-badge {
+    align-self: flex-start;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.ewp-status-badge.status-available {
+    color: var(--available);
+    background-color: rgba(39, 174, 96, 0.1);
+}
+
+.ewp-status-badge.status-unavailable {
+    color: var(--not-available);
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
+.ewp-name {
+    color: var(--card-name);
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.ewp-occupation {
+    color: var(--card-occupation);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* ============================================================
+   Sections
+   ============================================================ */
+.ewp-section {
+    margin-bottom: 24px;
+}
+
+.ewp-section:last-of-type {
+    margin-bottom: 28px;
+}
+
+.ewp-section-title {
+    color: var(--heading-h3);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 14px;
+}
+
+.ewp-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 24px;
+}
+
+.ewp-detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.field-label {
+    color: var(--text-hint);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.field-value {
+    color: var(--card-details);
+    font-size: 0.95rem;
+}
+
+.ewp-bio {
+    color: var(--text-primary);
+    font-size: 0.92rem;
+    line-height: 1.7;
+    background-color: var(--page-bg);
+    border-radius: 8px;
+    padding: 16px 18px;
+}
+
+/* ============================================================
+   Actions
+   ============================================================ */
+.ewp-actions form {
+    width: 100%;
+}
+
+.ewp-hire-btn {
+    width: 100%;
+    padding: 13px 0;
+    background-color: var(--link-color);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.ewp-hire-btn:hover {
+    background-color: var(--link-hover);
+}
+
+.ewp-hire-btn:active {
+    transform: translateY(1px);
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 560px) {
+    .ewp-wrapper {
+        padding: 28px 14px;
+    }
+
+    .ewp-card {
+        padding: 24px 20px;
+    }
+
+    .ewp-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .ewp-status-badge {
+        align-self: center;
+    }
+
+    .ewp-detail-grid {
+        grid-template-columns: 1fr;
+    }
+}

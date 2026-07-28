@@ -1,0 +1,141 @@
+:root{
+    --primary:#2C3E50;
+    --secondary:#E67E22;
+    --accent:#27AE60;
+    --background:#F4F6F7;
+    --white:#FFFFFF;
+    --heading:#2C3E50;
+    --text:#444444;
+    --text-light:#777777;
+    --card-value:#E67E22;
+    --danger:#E74C3C;
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+body{
+    font-family:'Segoe UI',sans-serif;
+    background:var(--background);
+}
+/* Dashboard */
+.dashboard{
+    padding-top: 2rem;
+    width:82%;
+    max-width:1200px;
+    margin:auto;
+}
+.dashboard h1{
+    color:var(--heading);
+    font-size:34px;
+    margin-bottom:8px;
+}
+.dashboard p{
+    color:var(--text-light);
+}
+.active-dashboard{
+    color:var(--nav-active)!important;
+    /*font-weight:600;*/
+}
+/* Cards */
+.card-container{
+    margin-top:35px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+.card{
+    background:var(--white);
+    border-radius:16px;
+    border-top:4px solid var(--secondary);
+    box-shadow:0 6px 16px rgba(0,0,0,.08);
+    padding:20px;
+    min-height:210px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    transition:.3s;
+}
+.card:last-child{
+    border-top:4px solid var(--danger);
+}
+.card:hover{
+    transform:translateY(-5px);
+}
+/* Top */
+.card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+.card h3{
+    color:var(--heading);
+    font-size:18px;
+    font-weight:600;
+}
+.icon{
+    font-size:24px;
+    color:var(--secondary);
+}
+.banned-icon{
+    font-size:24px;
+    color:var(--danger);
+}
+/* Number */
+.number{
+    font-size:42px;
+    font-weight:700;
+    color:var(--card-value);
+    margin-bottom:18px;
+}
+/* Banned */
+.banned{
+    margin-top:5px;
+}
+.banned p{
+    display:flex;
+    justify-content:space-between;
+    color:var(--text);
+    font-size:15px;
+    margin:8px 0;
+}
+.banned hr{
+    border:none;
+    border-top:1px solid #E8E8E8;
+    margin:10px 0;
+}
+.total{
+    font-weight:bold;
+    color:var(--heading);
+}
+/* Footer */
+.card-footer{
+    margin-top:auto;
+    padding-top:14px;
+    border-top:1px solid #ECECEC;
+}
+.card-footer a{
+    text-decoration:none;
+    color:var(--secondary);
+    font-weight:600;
+    font-size:15px;
+}
+.card-footer a:hover{
+    color:#D35400;
+}
+/* Responsive */
+@media(max-width:1000px){
+.card-container{
+grid-template-columns:repeat(2,1fr);
+}
+}
+@media(max-width:700px){
+.dashboard{
+width:92%;
+}
+.card-container{
+grid-template-columns:1fr;
+}
+}

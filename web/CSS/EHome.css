@@ -1,0 +1,161 @@
+/* ============================================================
+   EHome.css
+   ============================================================ */
+
+:root {
+    /* ── Headings ────────────────────────────── */
+    --heading-h1     : #2C3E50;
+    /* ── Body Text ───────────────────────────── */
+    --text-primary   : #444444;
+    --text-secondary : #777777;
+    /* ── Link Text ───────────────────────────── */
+    --link-color     : #E67E22;
+    --link-hover     : #D35400;
+
+    /* ── Structural (non text) helpers ──────── */
+    --navbar-height  : 80px;
+    --page-bg        : #F5F6F7;
+    --card-bg        : #FFFFFF;
+    --border-color   : #E4E7EA;
+    
+    --nav-active     : #E67E22;
+}
+
+/* ============================================================
+   Reset
+   ============================================================ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--page-bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* ============================================================
+   Page shell
+   ============================================================ */
+.ehome-wrapper {
+    min-height: calc(100vh - var(--navbar-height));
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+}
+
+.ehome-header {
+    text-align: center;
+    margin-bottom: 36px;
+}
+
+.ehome-title {
+    color: var(--heading-h1);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.ehome-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* ============================================================
+   Profession grid
+   ============================================================ */
+.profession-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 18px;
+}
+
+.profession-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding: 28px 16px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(44, 62, 80, 0.05);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.profession-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--link-color);
+    box-shadow: 0 10px 24px rgba(230, 126, 34, 0.15);
+}
+
+.profession-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: rgba(230, 126, 34, 0.1);
+    color: var(--link-color);
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.profession-card:hover .profession-icon {
+    background-color: var(--link-color);
+    color: #FFFFFF;
+    transform: scale(1.08) rotate(-4deg);
+}
+
+.profession-label {
+    color: var(--text-primary);
+    font-size: 0.92rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.profession-card:hover .profession-label {
+    color: var(--link-color);
+}
+
+.nav-bar .left > div > .active-home {
+    color: var(--nav-active);
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 600px) {
+    .ehome-wrapper {
+        padding: 32px 16px 48px;
+    }
+
+    .ehome-title {
+        font-size: 1.4rem;
+    }
+
+    .profession-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 14px;
+    }
+
+    .profession-card {
+        padding: 20px 10px;
+    }
+
+    .profession-icon {
+        width: 46px;
+        height: 46px;
+    }
+
+    .profession-icon svg {
+        width: 22px;
+        height: 22px;
+    }
+}

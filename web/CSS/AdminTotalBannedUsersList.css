@@ -1,0 +1,278 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 23-Jul-2026, 5:10:32 pm
+    Author     : huzaif
+*/
+
+/*=========================================================
+                    AListOfEmployer.css
+=========================================================*/
+:root{
+    /* ---------- Primary Theme ---------- */
+    --primary:#2C3E50;
+    --secondary:#E67E22;
+    --accent:#27AE60;
+    --danger:#E74C3C;
+    /* ---------- Background ---------- */
+    --background:#F4F6F7;
+    --white:#FFFFFF;
+    /* ---------- Text ---------- */
+    --heading:#2C3E50;
+    --text:#444444;
+    --text-light:#777777;
+    /* ── Status Text ─────────────────────────── */
+    --pending        : #E67E22;
+}
+/*=========================================================
+                    Reset
+=========================================================*/
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+body{
+    font-family:"Segoe UI",sans-serif;
+    background:var(--background);
+}
+/*=========================================================
+                    Main Container
+=========================================================*/
+.container{
+    width:90%;
+    max-width:1300px;
+    margin:35px auto;
+}
+/*=========================================================
+                    Header
+=========================================================*/
+.page-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+.page-header h1{
+    color:var(--heading);
+    font-size:34px;
+}
+.page-header p{
+    color:var(--text-light);
+    margin-top:6px;
+}
+.employer-count{
+    background:var(--white);
+    width:170px;
+    border-radius:16px;
+    padding:18px;
+    text-align:center;
+    box-shadow:0 6px 16px rgba(0,0,0,.08);
+    border-top:4px solid var(--secondary);
+}
+.employer-count span{
+    color:var(--text-light);
+    font-size:14px;
+}
+.employer-count h2{
+    color:var(--secondary);
+    margin-top:8px;
+    font-size:34px;
+}
+/*=========================================================
+                    Search Card
+=========================================================*/
+.search-section{
+    background:var(--white);
+    border-radius:16px;
+    padding:22px;
+    margin-bottom:30px;
+    display:flex;
+    gap:18px;
+    align-items:center;
+    box-shadow:0 6px 16px rgba(0,0,0,.08);
+}
+.search-section input{
+    flex:1;
+    height:48px;
+    border:1px solid #DDDDDD;
+    border-radius:8px;
+    padding:0 16px;
+    font-size:15px;
+    outline:none;
+}
+.search-section input:focus{
+    border-color:var(--secondary);
+}
+.search-section button{
+    height:48px;
+    padding:0 28px;
+    border:none;
+    border-radius:8px;
+    background:var(--secondary);
+    color:white;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+.search-section button:hover{
+    background:#D35400;
+}
+.search-section i{
+    margin-right:8px;
+}
+/*=========================================================
+                    Table Card
+=========================================================*/
+.table-container{
+    background:var(--white);
+    border-radius:16px;
+    padding:20px;
+    box-shadow:0 6px 16px rgba(0,0,0,.08);
+    overflow-x:auto;
+    margin-bottom:30px;  
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+thead{
+    background:var(--primary);
+}
+thead th{
+    color:white;
+    padding:16px;
+    font-size:15px;
+    text-align:left;
+}
+tbody td{
+    padding:16px;
+    border-bottom:1px solid #ECECEC;
+    color:var(--text);
+    font-size:15px;
+}
+tbody tr:hover{
+    background:#FAFAFA;
+}
+/*=========================================================
+                    Status
+=========================================================*/
+/*.active-status{
+    background:#EAF8F1;
+    color:var(--accent);
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+}
+*/
+.banned-status{
+    background:#FDEDED;
+    color:var(--danger);
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+}
+/*=========================================================
+                    Action Buttons
+=========================================================*/
+form{
+    display: inline-block;
+}
+.view-btn,
+.ban-btn,
+.unban-btn{
+    border: none;
+    display:inline-block;
+    text-decoration:none;
+    padding:8px 15px;
+    border-radius:6px;
+    font-size:14px;
+    font-weight:600;
+    margin-right:8px;
+    transition:.25s;
+}
+.view-btn{
+    background:var(--primary);
+    color:white;
+}
+.view-btn:hover{
+    background:#20303F;
+}
+.ban-btn{
+    background:var(--danger);
+    color:white;
+}
+.ban-btn:hover{
+    background:#C0392B;
+}
+.unban-btn{
+    background:var(--accent);
+    color:white;
+}
+.unban-btn:hover{
+    background:#1F8E4D;
+}
+.no-data{
+
+    text-align:center;
+
+    padding:35px;
+
+    color:#777777;
+
+    font-weight:600;
+
+}
+
+
+/*=========================================================
+                    Pagination
+=========================================================*/
+.pagination{
+    margin-top:30px;
+    min-height:60px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+/*=========================================================
+                    Responsive
+=========================================================*/
+@media(max-width:950px){
+    .page-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:20px;
+    }
+    .search-section{
+        flex-direction:column;
+    }
+    .search-section input{
+        width:100%;
+    }
+    .search-section button{
+        width:100%;
+    }
+}
+@media(max-width:700px){
+    .container{
+        width:95%;
+    }
+    thead th,
+    tbody td{
+        padding:12px;
+        font-size:14px;
+    }
+    .view-btn,
+    .ban-btn,
+    .unban-btn{
+        display:block;
+        margin-bottom:8px;
+    }
+}
+

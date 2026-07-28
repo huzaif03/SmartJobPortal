@@ -1,0 +1,297 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 14-Jul-2026, 6:02:35 pm
+    Author     : huzaif
+*/
+/*=============================
+        ROOT VARIABLES
+==============================*/
+:root{
+    --navbar-height:80px;
+    --page-bg:#F5F7FA;
+    --card-bg:#FFFFFF;
+    --heading:#2C3E50;
+    --text-primary:#444;
+    --text-secondary:#777;
+    --text-hint:#999;
+    --orange:#E67E22;
+    --orange-dark:#D35400;
+    --green:#27AE60;
+    --red:#E74C3C;
+    --input-bg:#F1F3F5;
+    --border:#DDE2E7;
+}
+/*=============================
+            RESET
+==============================*/
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+body{
+    background:var(--page-bg);
+}
+/*=============================
+        WRAPPER
+==============================*/
+.profile-wrapper{
+    margin-top:80px;
+    padding:40px 20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+/*=============================
+        CARD
+==============================*/
+.profile-card{
+    width:100%;
+    max-width:720px;
+    background:var(--card-bg);
+    border-radius:18px;
+    padding:40px;
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+    animation:cardAnimation .6s ease;
+}
+@keyframes cardAnimation{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+/*=============================
+        HEADER
+==============================*/
+.profile-header{
+    text-align:center;
+    margin-bottom:35px;
+}
+.profile-icon{
+    width:85px;
+    height:85px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--orange),var(--orange-dark));
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:auto;
+    font-size:40px;
+    box-shadow:0 10px 25px rgba(230,126,34,.3);
+}
+.profile-title{
+    margin-top:18px;
+    color:var(--heading);
+    font-size:32px;
+}
+.profile-subtitle{
+    margin-top:10px;
+    color:var(--text-secondary);
+    line-height:1.6;
+}
+/*=============================
+        FORM
+==============================*/
+.profile-form-group{
+    margin-bottom:25px;
+}
+.profile-label{
+    display:block;
+    margin-bottom:10px;
+    font-weight:600;
+    color:var(--heading);
+}
+/*=============================
+        INPUT
+==============================*/
+.profile-input,
+.profile-select,
+.profile-textarea{
+    width:100%;
+    padding:15px;
+    border-radius:12px;
+    border:1px solid var(--border);
+    background:var(--input-bg);
+    font-size:15px;
+    transition:.3s;
+}
+.profile-input:focus,
+.profile-select:focus,
+.profile-textarea:focus{
+    outline:none;
+    background:#fff;
+    border-color:var(--orange);
+    box-shadow:0 0 0 4px rgba(230,126,34,.15);
+}
+.profile-textarea{
+    resize:none;
+    min-height:150px;
+}
+.profile-input::placeholder,
+.profile-textarea::placeholder{
+    color:var(--text-hint);
+}
+/*=============================
+        SELECT
+==============================*/
+.profile-select{
+    appearance:none;
+    -webkit-appearance:none;
+    background:
+    var(--input-bg)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='%23E67E22' viewBox='0 0 16 16'%3E%3Cpath d='M2 5l6 6 6-6z'/%3E%3C/svg%3E")
+    no-repeat right 18px center;
+    padding-right:50px;
+}
+/*=============================
+    AVAILABILITY TOGGLE
+==============================*/
+/*==============================
+      AVAILABILITY SWITCH
+==============================*/
+.availability-switch{
+    position:relative;
+    display:flex;
+    width:100%;
+    height:60px;
+    border-radius:15px;
+    background:#ECEFF3;
+    overflow:hidden;
+    box-shadow:0 6px 18px rgba(0,0,0,.08);
+}
+.availability-switch input{
+    display:none;
+}
+.availability-switch .option{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:2;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:600;
+    color:#555;
+    transition:.35s;
+    user-select:none;
+}
+.slider{
+    position:absolute;
+    top:5px;
+    left:5px;
+    width:calc(50% - 5px);
+    height:50px;
+    border-radius:12px;
+    background:linear-gradient(135deg,#2ECC71,#27AE60);
+    transition:.4s cubic-bezier(.68,-0.55,.27,1.55);
+    z-index:1;
+    box-shadow:0 8px 18px rgba(39,174,96,.30);
+}
+#available:checked ~ .slider{
+    left:5px;
+    background:linear-gradient(135deg,#2ECC71,#27AE60);
+    box-shadow:0 8px 18px rgba(39,174,96,.35);
+}
+#notAvailable:checked ~ .slider{
+    left:calc(50%);
+    background:linear-gradient(135deg,#E74C3C,#C0392B);
+    box-shadow:0 8px 18px rgba(231,76,60,.35);
+}
+#available:checked ~ label[for="available"]{
+    color:#fff;
+}
+#available:checked ~ label[for="notAvailable"]{
+    color:#666;
+}
+#notAvailable:checked ~ label[for="available"]{
+    color:#666;
+}
+#notAvailable:checked ~ label[for="notAvailable"]{
+    color:#fff;
+}
+.availability-switch .option:hover{
+    transform:scale(1.03);
+}
+/*=============================
+    BIO COUNTER
+==============================*/
+.bio-counter{
+    margin-top:8px;
+    text-align:right;
+    color:var(--text-secondary);
+    font-size:13px;
+}
+/*=============================
+    BUTTON
+==============================*/
+.profile-btn-group{
+    margin-top:35px;
+}
+.profile-submit-btn{
+    width:100%;
+    border:none;
+    padding:16px;
+    border-radius:12px;
+    font-size:17px;
+    font-weight:600;
+    color:#fff;
+    cursor:pointer;
+    background:linear-gradient(135deg,var(--orange),var(--orange-dark));
+    transition:.35s;
+}
+.profile-submit-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 25px rgba(230,126,34,.35);
+}
+/*=============================
+        FOOTER
+==============================*/
+.profile-footer{
+    text-align:center;
+    margin-top:30px;
+}
+.back-home{
+    text-decoration:none;
+    color:var(--orange);
+    font-weight:600;
+    transition:.3s;
+}
+.back-home:hover{
+    color:var(--orange-dark);
+}
+/*=============================
+        RESPONSIVE
+==============================*/
+@media(max-width:768px){
+    .profile-card{
+        padding:28px;
+    }
+    .availability-toggle{
+        flex-direction:column;
+    }
+}
+@media(max-width:480px){
+    .profile-wrapper{
+        padding:20px 10px;
+    }
+    .profile-card{
+        padding:20px;
+    }
+    .profile-title{
+        font-size:25px;
+    }
+    .profile-icon{
+        width:70px;
+        height:70px;
+        font-size:32px;
+    }
+}

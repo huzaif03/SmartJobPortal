@@ -1,0 +1,304 @@
+/* ============================================================
+   EListOfWorker.css
+   ============================================================ */
+
+:root {
+    /* ── Headings ────────────────────────────── */
+    --heading-h1     : #2C3E50;
+    /* ── Body Text ───────────────────────────── */
+    --text-primary   : #444444;
+    --text-secondary : #777777;
+    --text-hint      : #AAAAAA;
+    /* ── Card Text ───────────────────────────── */
+    --card-name      : #2C3E50;
+    --card-occupation: #E67E22;
+    --card-details   : #555555;
+    /* ── Status Text ─────────────────────────── */
+    --available      : #27AE60;
+    --not-available  : #E74C3C;
+    /* ── Link Text ───────────────────────────── */
+    --link-color     : #E67E22;
+    --link-hover     : #D35400;
+
+    /* ── Structural (non text) helpers ──────── */
+    --navbar-height  : 80px;
+    --page-bg        : #F5F6F7;
+    --card-bg        : #FFFFFF;
+    --border-color   : #E4E7EA;
+    
+        --nav-active     : #E67E22;
+}
+
+/* ============================================================
+   Reset
+   ============================================================ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--page-bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* ============================================================
+   Page shell
+   ============================================================ */
+.elist-wrapper {
+    min-height: calc(100vh - var(--navbar-height));
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 40px 24px 64px;
+}
+
+.elist-header {
+    margin-bottom: 28px;
+}
+
+.elist-title {
+    color: var(--heading-h1);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.elist-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+}
+
+.elist-success-msg {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 10px 18px;
+    background-color: rgba(39, 174, 96, 0.1);
+    color: var(--available);
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+/* ============================================================
+   Empty state
+   ============================================================ */
+.elist-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    color: var(--text-hint);
+    background-color: var(--card-bg);
+    border: 1px dashed var(--border-color);
+    border-radius: 12px;
+    padding: 64px 20px;
+    text-align: center;
+}
+
+.elist-empty-state p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    max-width: 360px;
+}
+
+/* ============================================================
+   Worker grid
+   ============================================================ */
+.worker-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 22px;
+}
+
+/* ============================================================
+   Worker card
+   ============================================================ */
+.worker-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(44, 62, 80, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.worker-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 26px rgba(44, 62, 80, 0.12);
+}
+
+/* -- Photo -- */
+.worker-photo {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    background-color: var(--page-bg);
+}
+
+.worker-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    display: block;
+}
+
+.worker-photo img.worker-photo-fallback {
+    object-fit: contain;
+    padding: 24px 0;
+    background-color: var(--page-bg);
+}
+
+.worker-status-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    backdrop-filter: blur(2px);
+}
+
+.worker-status-badge.status-available {
+    color: #FFFFFF;
+    background-color: rgba(39, 174, 96, 0.92);
+}
+
+.worker-status-badge.status-unavailable {
+    color: #FFFFFF;
+    background-color: rgba(231, 76, 60, 0.92);
+}
+
+/* -- Info -- */
+.worker-info {
+    padding: 18px 20px 6px;
+    flex: 1;
+}
+
+.worker-name {
+    color: var(--card-name);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.worker-occupation {
+    color: var(--card-occupation);
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.worker-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-color);
+}
+
+.worker-meta-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.field-label {
+    color: var(--text-hint);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+}
+
+.field-value {
+    color: var(--card-details);
+    font-size: 0.85rem;
+    text-align: right;
+}
+
+/* -- Actions -- */
+.worker-actions {
+    display: flex;
+    gap: 10px;
+    padding: 18px 20px 20px;
+}
+
+.worker-actions form {
+    flex: 1;
+}
+
+.worker-btn {
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 8px;
+    font-size: 0.86rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+
+.worker-btn:active {
+    transform: translateY(1px);
+}
+
+.worker-btn-visit {
+    background: none;
+    border: 1.5px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+.worker-btn-visit:hover {
+    border-color: var(--text-hint);
+    color: var(--text-primary);
+}
+
+.worker-btn-hire {
+    background-color: var(--link-color);
+    border: 1.5px solid var(--link-color);
+    color: #FFFFFF;
+}
+
+.worker-btn-hire:hover {
+    background-color: var(--link-hover);
+    border-color: var(--link-hover);
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 640px) {
+    .elist-wrapper {
+        padding: 28px 16px 48px;
+    }
+
+    .elist-title {
+        font-size: 1.35rem;
+    }
+
+    .worker-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .worker-actions {
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 900px) {
+    .worker-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

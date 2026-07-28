@@ -1,0 +1,367 @@
+
+/* 
+    Created on : 21-Jul-2026
+    Author     : huzaif
+*/
+
+/* ============================================================
+   WNotification.css
+   ============================================================ */
+
+:root {
+    /* ── Headings ────────────────────────────── */
+    --heading-h1     : #2C3E50;
+    /* ── Body Text ───────────────────────────── */
+    --text-primary   : #444444;
+    --text-secondary : #777777;
+    --text-hint      : #AAAAAA;
+    /* ── Card Text ───────────────────────────── */
+    --card-name      : #2C3E50;
+    --card-occupation: #E67E22;
+    --card-details   : #555555;
+    /* ── Status Text ─────────────────────────── */
+    --available      : #27AE60;
+    --not-available  : #E74C3C;
+    --pending        : #E67E22;
+    --completed      : #2C3E50;
+    --cancelled      : #999999;
+    /* ── Form Text ───────────────────────────── */
+    --form-label     : #2C3E50;
+    --form-input     : #222222;
+    --form-placeholder: #AAAAAA;
+    /* ── Link Text ───────────────────────────── */
+    --link-color     : #E67E22;
+    --link-hover     : #D35400;
+
+    /* ── Structural (non text) helpers ──────── */
+    --navbar-height  : 80px;
+    --page-bg        : #F5F6F7;
+    --card-bg        : #FFFFFF;
+    --border-color   : #E4E7EA;
+    --input-bg       : #F1F3F5;
+    --input-bg-focus : #FFFFFF;
+}
+
+/* ============================================================
+   Reset
+   ============================================================ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--page-bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* ============================================================
+   Page shell
+   ============================================================ */
+.notif-wrapper {
+    min-height: calc(100vh - var(--navbar-height));
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 20px 64px;
+}
+
+.notif-header {
+    margin-bottom: 24px;
+}
+
+.notif-title {
+    color: var(--heading-h1);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.notif-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* ============================================================
+   Empty state
+   ============================================================ */
+.notif-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-hint);
+    background-color: var(--card-bg);
+    border: 1px dashed var(--border-color);
+    border-radius: 12px;
+    padding: 56px 20px;
+    text-align: center;
+}
+
+.notif-empty-state p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+/* ============================================================
+   Card
+   ============================================================ */
+.notif-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px 22px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 14px rgba(44, 62, 80, 0.05);
+    transition: box-shadow 0.2s ease;
+}
+
+.notif-card:hover {
+    box-shadow: 0 6px 20px rgba(44, 62, 80, 0.09);
+}
+
+/* -- Top row: request id + status -- */
+.notif-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.notif-request-id {
+    color: var(--text-hint);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+/* -- Status badge — five states -- */
+.notif-status-badge {
+    flex-shrink: 0;
+    padding: 5px 14px;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.notif-status-badge.status-pending {
+    color: var(--pending);
+    background-color: rgba(230, 126, 34, 0.1);
+}
+
+.notif-status-badge.status-accepted {
+    color: var(--available);
+    background-color: rgba(39, 174, 96, 0.1);
+}
+
+.notif-status-badge.status-rejected {
+    color: var(--not-available);
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
+.notif-status-badge.status-completed {
+    color: var(--completed);
+    background-color: rgba(44, 62, 80, 0.08);
+}
+
+.notif-status-badge.status-cancelled {
+    color: var(--cancelled);
+    background-color: rgba(153, 153, 153, 0.12);
+}
+
+/* -- Body: location / zip -- */
+.notif-card-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 24px;
+}
+
+.notif-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.field-label {
+    color: var(--text-hint);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.field-value {
+    color: var(--card-details);
+    font-size: 0.92rem;
+}
+
+/* -- Status notes -- */
+.notif-note {
+    margin-top: 16px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+}
+
+.note-accepted {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background-color: rgba(39, 174, 96, 0.08);
+}
+
+.note-accepted .field-value {
+    color: var(--available);
+    font-weight: 700;
+    font-size: 0.98rem;
+}
+
+.note-rejected {
+    background-color: rgba(231, 76, 60, 0.08);
+    color: var(--not-available);
+    font-weight: 500;
+}
+
+.note-cancelled {
+    background-color: rgba(153, 153, 153, 0.1);
+    color: var(--cancelled);
+    font-weight: 500;
+}
+
+.note-completed {
+    background-color: rgba(44, 62, 80, 0.06);
+    color: var(--completed);
+    font-weight: 500;
+}
+
+/* ============================================================
+   Actions (Accept / Reject / Complete buttons)
+   ============================================================ */
+.notif-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.notif-actions form {
+    flex: 1;
+}
+
+.notif-btn {
+    width: 100%;
+    padding: 9px 18px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+
+.notif-btn:active {
+    transform: translateY(1px);
+}
+
+.notif-btn-reject {
+    background: none;
+    border: 1.5px solid var(--not-available);
+    color: var(--not-available);
+}
+
+.notif-btn-reject:hover {
+    background-color: var(--not-available);
+    color: #FFFFFF;
+}
+
+.notif-btn-accept {
+    background-color: var(--available);
+    border: 1.5px solid var(--available);
+    color: #FFFFFF;
+}
+
+.notif-btn-accept:hover {
+    background-color: #219653;
+    border-color: #219653;
+}
+
+.notif-btn-complete {
+    background-color: var(--link-color);
+    border: 1.5px solid var(--link-color);
+    color: #FFFFFF;
+}
+
+.notif-btn-complete:hover {
+    background-color: var(--link-hover);
+    border-color: var(--link-hover);
+}
+
+/* ============================================================
+   Rating section (Completed phase — read-only, worker side)
+   ============================================================ */
+.notif-rating-section {
+    margin-top: 16px;
+    padding: 16px;
+    background-color: var(--page-bg);
+    border-radius: 10px;
+}
+
+.notif-rating-label {
+    color: var(--form-label);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.star-display {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 10px;
+}
+
+.star-display-item {
+    font-size: 1.4rem;
+    line-height: 1;
+    color: var(--border-color);
+}
+
+.star-display-item.filled {
+    color: var(--link-color);
+}
+
+.notif-rating-comment {
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    font-style: italic;
+}
+.nav-bar .left > div > .active-notification {
+    color: var(--nav-active);
+}
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 560px) {
+    .notif-wrapper {
+        padding: 24px 14px 48px;
+    }
+
+    .notif-card {
+        padding: 16px 16px;
+    }
+
+    .notif-card-body {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .notif-actions {
+        flex-direction: column;
+    }
+}

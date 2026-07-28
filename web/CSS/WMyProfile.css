@@ -1,0 +1,646 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 17-Jul-2026, 4:06:17 pm
+    Author     : huzaif
+*/
+
+/* ============================================================
+   MyProfile.css
+   ============================================================ */
+
+:root {
+    /* ── Navbar Text ─────────────────────────── */
+    --nav-brand      : #FFFFFF;   /* brand name */
+    --nav-link       : #BDC3C7;   /* nav links */
+    --nav-active     : #E67E22;   /* active / logout */
+    /* ── Headings ────────────────────────────── */
+    --heading-h1     : #2C3E50;   /* page titles */
+    --heading-h2     : #2C3E50;   /* section headings */
+    --heading-h3     : #E67E22;   /* sub headings */
+    /* ── Body Text ───────────────────────────── */
+    --text-primary   : #444444;   /* main content */
+    --text-secondary : #777777;   /* supporting info */
+    --text-hint      : #AAAAAA;   /* small labels */
+    /* ── Card Text ───────────────────────────── */
+    --card-name      : #2C3E50;   /* worker name */
+    --card-occupation: #E67E22;   /* occupation */
+    --card-details   : #555555;   /* exp, location */
+    --card-light     : #999999;   /* zip, joined date */
+    /* ── Status Text ─────────────────────────── */
+    --available      : #27AE60;   /* available */
+    --not-available  : #E74C3C;   /* not available */
+    --pending        : #E67E22;   /* pending status */
+    /* ── Form Text ───────────────────────────── */
+    --form-label     : #2C3E50;   /* labels */
+    --form-input     : #222222;   /* typed text */
+    --form-placeholder: #AAAAAA;  /* placeholder */
+    --form-hint      : #999999;   /* hint text */
+    --form-error     : #E74C3C;   /* error message */
+    --form-success   : #27AE60;   /* success message */
+    /* ── Link Text ───────────────────────────── */
+    --link-color     : #E67E22;   /* clickable links */
+    --link-hover     : #D35400;   /* hovered links */
+
+    /* ── Structural (non text) helpers ──────── */
+    --navbar-bg      : #2C3E50;
+    --page-bg        : #F5F6F7;
+    --card-bg        : #FFFFFF;
+    --border-color   : #E4E7EA;
+    
+        --nav-active     : #E67E22;
+}
+
+/* ============================================================
+   Reset
+   ============================================================ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--page-bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* ============================================================
+   Navbar
+   ============================================================ */
+.nav {
+    height: 80px;
+    background-color: var(--navbar-bg);
+    color: var(--nav-brand);
+    display: flex;
+    align-items: center;
+    padding: 0 32px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+/* Reference styling only — brand / links / active states,
+   to be used if/when markup is added inside .nav */
+.nav .nav-brand {
+    color: var(--nav-brand);
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.nav .nav-link {
+    color: var(--nav-link);
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.nav .nav-link:hover,
+.nav .nav-link.active,
+.nav .nav-logout {
+    color: var(--nav-active);
+}
+
+/* ============================================================
+   Layout
+   ============================================================ */
+.content {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 720px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 32px;
+}
+
+.profile-photo {
+    display: block;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 20px;
+    border: 3px solid var(--card-bg);
+    outline: 1px solid var(--border-color);
+    box-shadow: 0 4px 14px rgba(44, 62, 80, 0.15);
+    background-color: var(--page-bg);
+}
+
+/* Keeps a clean circular frame even if the image fails to load,
+   since broken <img> alt text still needs to sit inside the circle */
+.profile-photo {
+    color: var(--text-hint);
+    font-size: 0.8rem;
+    text-align: center;
+    line-height: 140px;
+}
+
+/* ============================================================
+   Headings
+   ============================================================ */
+#name {
+    color: var(--heading-h2);
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+/* ============================================================
+   Section Header (title + Edit action)
+   ============================================================ */
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.section-header h3 {
+    color: var(--heading-h3);
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.edit-btn {
+    background: none;
+    border: none;
+    color: var(--link-color);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.edit-btn:hover,
+.edit-btn:focus-visible {
+    color: var(--link-hover);
+    background-color: rgba(230, 126, 34, 0.08);
+}
+
+.edit-btn:focus-visible {
+    outline: 2px solid var(--link-color);
+    outline-offset: 2px;
+}
+
+/* ============================================================
+   Personal Information
+   ============================================================ */
+.personal-information {
+    padding: 20px 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 24px;
+}
+
+.personal-information .section-header {
+    grid-column: 1 / -1;
+}
+
+.personal-information p {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+/* -- View mode grid (reuses the same field-label/field-value pattern as Address) -- */
+.personal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 24px;
+}
+
+.personal-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.locked-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--text-hint);
+}
+
+.locked-label svg {
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+
+/* -- Edit mode -- */
+.locked-notice {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    margin-bottom: 16px;
+    background-color: var(--page-bg);
+    border: 1px dashed var(--border-color);
+    border-radius: 8px;
+    color: var(--text-hint);
+    font-size: 0.8rem;
+}
+
+.locked-notice svg {
+    flex-shrink: 0;
+}
+
+.personal-edit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 24px;
+    margin-bottom: 12px;
+}
+
+/* ============================================================
+   Worker Profile
+   ============================================================ */
+.worker-profile {
+    padding-bottom: 20px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.worker-profile p {
+    color: var(--card-details);
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+}
+
+#worker-occupation {
+    color: var(--card-occupation);
+    font-weight: 600;
+}
+
+.worker-view .field-label {
+    margin-right: 6px;
+}
+
+.worker-bio-view {
+    margin-top: 14px;
+}
+
+.worker-bio-view p {
+    color: var(--text-secondary);
+    margin-top: 6px;
+    margin-bottom: 0;
+    line-height: 1.6;
+}
+
+.worker-profile textarea {
+    width: 100%;
+    min-height: 90px;
+    margin-top: 8px;
+    padding: 12px;
+    resize: none;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--page-bg);
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 0.9rem;
+}
+
+/* ============================================================
+   Address
+   ============================================================ */
+.address {
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+/* -- View mode -- */
+.address-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 24px;
+}
+
+.address-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.address-field-full {
+    grid-column: 1 / -1;
+}
+
+.field-label {
+    color: var(--text-hint);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.field-value {
+    color: var(--card-details);
+    font-size: 0.95rem;
+}
+
+/* -- Edit mode -- */
+.address-edit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 24px;
+    margin-bottom: 12px;
+}
+
+.address-edit .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.address-edit label {
+    color: var(--form-label);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.address-edit input[type="text"] {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid transparent;
+    border-radius: 8px;
+    background-color: var(--page-bg);
+    color: var(--form-input);
+    font-family: inherit;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.address-edit input[type="text"]::placeholder {
+    color: var(--form-placeholder);
+}
+
+.address-edit input[type="text"]:hover {
+    background-color: #EAEDEF;
+}
+
+.address-edit input[type="text"]:focus {
+    outline: none;
+    background-color: var(--card-bg);
+    border-color: var(--link-color);
+    box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.15);
+}
+
+/* ============================================================
+   Shared form controls — used by Personal Information,
+   Worker Profile, and Address edit modes alike
+   ============================================================ */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    color: var(--form-label);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="number"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid transparent;
+    border-radius: 8px;
+    background-color: var(--page-bg);
+    color: var(--form-input);
+    font-family: inherit;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23777777' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 38px;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 90px;
+    line-height: 1.5;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--form-placeholder);
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+    background-color: #EAEDEF;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    background-color: var(--card-bg);
+    border-color: var(--link-color);
+    box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.15);
+}
+
+/* -- Availability chip selector (Worker Profile edit) -- */
+.chip-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.chip-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px;
+    border: 1.5px solid var(--border-color);
+    border-radius: 999px;
+    color: var(--text-primary);
+    font-size: 0.88rem;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: var(--page-bg);
+    transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.chip-label input[type="radio"] {
+    accent-color: var(--link-color);
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+}
+
+.chip-label:has(input[value="Available"]:checked) {
+    border-color: var(--available);
+    background-color: rgba(39, 174, 96, 0.08);
+    color: var(--available);
+    font-weight: 600;
+}
+
+.chip-label:has(input[value="Not Available"]:checked) {
+    border-color: var(--not-available);
+    background-color: rgba(231, 76, 60, 0.08);
+    color: var(--not-available);
+    font-weight: 600;
+}
+
+.worker-availability-value {
+    color: var(--available);
+    font-weight: 600;
+}
+
+.worker-availability-value.is-unavailable {
+    color: var(--not-available);
+}
+
+/* -- Shared feedback + action row (Personal Info, Worker Profile, Address) -- */
+.section-feedback {
+    min-height: 18px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.section-feedback.error {
+    color: var(--form-error);
+}
+
+.section-feedback.success {
+    color: var(--form-success);
+}
+
+.section-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.address-feedback {
+    min-height: 18px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.address-feedback.error {
+    color: var(--form-error);
+}
+
+.address-feedback.success {
+    color: var(--form-success);
+}
+
+.address-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.btn-cancel,
+.btn-save {
+    padding: 9px 18px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-cancel {
+    background: none;
+    border: 1.5px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+.btn-cancel:hover {
+    border-color: var(--text-hint);
+    color: var(--text-primary);
+}
+
+.btn-save {
+    background-color: var(--link-color);
+    border: 1.5px solid var(--link-color);
+    color: #FFFFFF;
+}
+
+.btn-save:hover {
+    background-color: var(--link-hover);
+    border-color: var(--link-hover);
+}
+
+.nav-bar .left > div > .active-profile {
+    color: var(--nav-active);
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 600px) {
+    .nav {
+        padding: 0 16px;
+    }
+
+    .content {
+        padding: 24px 12px;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    .personal-information {
+        grid-template-columns: 1fr;
+    }
+
+    .personal-grid,
+    .personal-edit-grid,
+    .address-grid,
+    .address-edit-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #name {
+        font-size: 1.35rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .container img {
+        width: 110px;
+        height: 110px;
+    }
+}
